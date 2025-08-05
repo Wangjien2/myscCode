@@ -1,28 +1,19 @@
-# Seurat2Anndata
+# Dara Type Convert
 
+# Generate Seurat object
 
+# Raw Filter
 
-# 生成Seurat对象
+## Doublet Cells Predict
 
+## Scrublet
 
-# 数据粗过滤
+## DoubletFinder
 
+# Remove batch and run cluster
 
-# 双细胞预测
+## BBKNN in R
 
-## scrublet
+# Cell Type Annotation
 
-
-## doubletFinder
-
-
-# 去批次聚类分群
-
-
-
-# 注释
-
-
-
-
-# 比例变化分析
+# Cell Fraction In Different Group
