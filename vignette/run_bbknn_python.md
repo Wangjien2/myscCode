@@ -1,7 +1,7 @@
 if you just have a Seurat object in R. but you want run it in python by bbknn batch correct. you have to transfer seurat object int h5ad object by [sceasy](https://github.com/cellgeni/sceasy) or [schard](https://github.com/cellgeni/schard).
 
 ```python
-set(adata.obs["orig.ident"].tolist()) adata = sc.read_h5ad("./scRNA_Harmony.h5ad")# import python moudle
+# import python moudle
 import scanpy as sc
 import pandas as pd
 import bbknn
