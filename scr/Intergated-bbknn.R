@@ -36,7 +36,7 @@ BBKNN_integrate <- function(srtMerge = NULL, batch = NULL, append = TRUE, srtLis
     "leiden" = 4
   )
 
-  check_Python("bbknn")
+ # check_Python("bbknn")
   bbknn <- import("bbknn")
   set.seed(seed)
 
