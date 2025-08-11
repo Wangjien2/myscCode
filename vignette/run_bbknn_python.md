@@ -52,4 +52,9 @@ sc.tl.louvain(adata)  # 结果保存在 adata.obs['louvain']
 sc.tl.leiden(adata)   # 结果保存在 adata.obs['leiden']
 # umap
 sc.tl.umap(adata)
+
+# plot 
+
 ```
+
+After batch correction and clustering, we can annotate the cell type using some automatic annotation software.

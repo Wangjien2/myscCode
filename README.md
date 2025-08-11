@@ -34,6 +34,7 @@ conda activate scanpy_env
 pip install bbknn==1.6.0
 pip install scanpy==1.9.5
 pip install scikit-learn==1.3.2
+pip install louvain==0.8.2
 pip install leidenalg==0.10.1 matplotlib==3.6.3 numba==0.55.2 numpy==1.21.6 palantir==1.0.1 pandas==1.3.5
 
 # check if python moudle have installed 
