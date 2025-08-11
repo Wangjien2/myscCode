@@ -41,7 +41,7 @@ pip install leidenalg==0.10.1 matplotlib==3.6.3 numba==0.55.2 numpy==1.21.6 pala
 python -c "import numpy;import scanpy;import bbknn"
 ```
 
-vignette: [vignette/run_bbknn_python.md]()
+[vignette](vignette/run_bbknn_python.md)
 
 # Cell Type Annotation
 
