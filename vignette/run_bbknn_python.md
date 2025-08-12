@@ -56,6 +56,8 @@ if not os.path.exists(output_dir):
 # 验证raw数据是否存在
 if adata.raw is not None:
     print("\n准备保存数据：raw数据已确认存在")
+    adata = adata.raw.to_adata() # 将raw数据添加回原数据
+
 else:
     print("\n警告：保存前未检测到raw数据！")
 
