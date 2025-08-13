@@ -43,9 +43,12 @@ python -c "import numpy;import scanpy;import bbknn"
 
 [vignette](vignette/run_bbknn_python.md)
 
+## Harmony in python
+
+[vignette](vignette/run_harmonypy.py)
+
 # Cell Type Annotation
 
 # Cell Fraction In Different Group
-
 
 # TCGA dataSet
