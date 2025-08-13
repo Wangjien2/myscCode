@@ -55,4 +55,7 @@ print("\n恢复raw数据后的信息:")
 print(f"raw数据包含 {adata.raw.n_obs} 个细胞和 {adata.raw.n_vars} 个基因")
 # 保存数据
 adata.write_h5ad("./scRNA_Scanorama.h5ad")
-
+# 保存绘图数据
+sc.pl.umap(adata, color=['leiden_scanorama'], save='Scanorama_leiden_scanorama.png')
+sc.pl.umap(adata, color=['sample'], save='Scanorama_sample.png')
+sc.pl.umap(adata, color=['orig.ident'], save='Scanorama_orig.ident.png')
