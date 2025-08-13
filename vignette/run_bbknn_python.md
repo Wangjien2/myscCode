@@ -39,7 +39,7 @@ sc.tl.pca(adata, svd_solver='arpack')
 # 运行BBKNN进行批次校正
 print("\n批次信息分布:")
 print(adata.obs["orig.ident"].value_counts())
-bbknn.bbknn(adata, batch_key="orig.ident")
+bbknn.bbknn(adata, batch_key="sample")
 
 # 聚类分析
 sc.tl.louvain(adata)
