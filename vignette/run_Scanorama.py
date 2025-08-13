@@ -1,15 +1,14 @@
 '''
 Author: wangje
 Date: 2025-08-13 15:05:11
-'''# Scanorama官网地址:https://github.com/brianhie/scanorama
+'''
+# Scanorama官网地址:https://github.com/brianhie/scanorama
 # Scanorama使用教程: https://github.com/brianhie/scanorama#full-tutorial
 # 安装：pip install scanorama
 import scanorama
 import sys
 import os
 import scanpy as sc
-import numpy as np
-import pandas as pd
 import scanpy.external as sce
 
 # 读取数据
@@ -39,35 +38,21 @@ sc.tl.pca(adata, svd_solver='arpack')
 print("\nPCA后的数据信息:")
 print(adata)
 
-# 执行Scanorama整合
-# 保存原始基因名称
-gene_names = adata.var_names.tolist()
-
-# 按批次拆分数据集并保留相同基因
-batches = adata.obs['orig.ident'].unique()
-datasets = []
-for batch in batches:
-    # 获取当前批次数据并确保基因顺序一致
-    batch_data = adata[adata.obs['orig.ident'] == batch, :]
-    # 确保所有批次使用相同的基因集合
-    datasets.append(batch_data[:, gene_names].X)
-
-# 执行Scanorama整合
-integrated, genes = scanorama.integrate(
-    datasets,
-    gene_names,
-    dimred=50,
-    verbose=True
-)
-
-# 将整合结果合并回AnnData对象
-adata.obsm['X_scanorama'] = np.concatenate(integrated)
+# 执行Scanorama
+sce.pp.scanorama_integrate(adata, key='orig.ident', basis='X_pca') 
 print("\nScanorama后的数据信息:")
 print(adata)
 
 sc.pp.neighbors(adata, use_rep='X_scanorama')
 sc.tl.umap(adata)
-sc.tl.leiden(adata, resolution=0.5, key_added='leiden_scanorama', use_weights=True)
+# sc.tl.tsne(adata, use_rep='X_scanorama')
+sc.tl.leiden(adata, resolution=0.5, key_added='leiden_scanorama',use_weights=True)
+# sc.tl.louvain(adata, resolution=0.5, key_added='louvain_scanorama',use_weights=True)
 
-# 保存数据（不恢复raw数据以保留整合结果）
+# 将raw数据恢复到adata中
+adata = adata.raw.to_adata()
+print("\n恢复raw数据后的信息:")
+print(f"raw数据包含 {adata.raw.n_obs} 个细胞和 {adata.raw.n_vars} 个基因")
+# 保存数据
 adata.write_h5ad("./scRNA_Scanorama.h5ad")
+
