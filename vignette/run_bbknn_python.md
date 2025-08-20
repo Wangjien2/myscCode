@@ -35,6 +35,8 @@ print(adata)
 # 执行PCA
 sc.pp.scale(adata, max_value=10)
 sc.tl.pca(adata, svd_solver='arpack')
+#sc.pp.neighbors(adata)
+sc.pp.neighbors(adata,n_neighbors=15,n_pcs=30)
 
 # 运行BBKNN进行批次校正
 print("\n批次信息分布:")
@@ -42,7 +44,7 @@ print(adata.obs["orig.ident"].value_counts())
 bbknn.bbknn(adata, batch_key="sample")
 
 # 聚类分析
-sc.tl.louvain(adata)
+#sc.tl.louvain(adata)
 sc.tl.leiden(adata)
 
 # 降维可视化（UMAP）
